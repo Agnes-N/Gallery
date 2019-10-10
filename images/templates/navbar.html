@@ -1,29 +1,33 @@
-{% load bootstrap4 %}
-{% load static%}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+
   <meta charset="utf-8">
-
-  {% if title %}
-  <title>Photo Gallery - {{title}}</title>
-  {% else %}
-    <title> Photo Gallery </title>
-  {% endif %}
-
-  {% block styles %}
-    {% bootstrap_css %}
-  {% endblock %}
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    {% include "navbar.html" %}
-
-    {% block content %} <h1 class='text-center'>News for</h1> {%endblock%}
-
-    {% block scripts %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/4.2.1/jquery.min.js"></script>
-     {% bootstrap_javascript %}
-    {% endblock %}
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url 'welcome' %}">Photo Gallery</a>
+                  </div>
+            
+                  <!-- Adding a search form  -->
+                  <div class="col-sm-4 col-md-4 navbar-right">
+            
+                    <form class="navbar-form" role="search" action="{% url 'search_image' %}">
+            
+                      <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search image" name="image">
+                        <div class="input-group-btn">
+                          <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                      </div>
+            
+                    </form>
+                  </div>
+                  <!-- search form end -->
+                </div>
+              </nav>
 </body>
 </html>
