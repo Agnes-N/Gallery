@@ -7,6 +7,7 @@ class Image(models.Model):
     name = models.CharField(max_length =30)
     description = models.TextField()
     pic_image = models.ImageField(upload_to = 'images/', null=True)
+    image_category = models.ForeignKey('Category', null=True)
 
     @classmethod
     def get_all_images(cls):
@@ -45,7 +46,8 @@ class Category(models.Model):
     categories = (("dogs","dogs"),("cats","cats")) 
     category = models.CharField(max_length = 255, choices = categories)
 
-
+    class Meta: 
+        verbose_name_plural = 'Category'
     def __str__(self):
         return f"{self.category}"
 
