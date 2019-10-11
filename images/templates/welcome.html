@@ -2,33 +2,57 @@
 {% block content %}
 {{block.super}}
 <h1 class='text-center' style="margin-bottom:5%;margin-top:3%;"> Welcome to my Gallery</h1>
-
 <div class="container">
 
-    <!-- Looping through images   -->
-    {% for image in images %}
-  
-    <div class="row">
-      <!-- displaying Images -->
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <h2 class="card-title"> {{ image.name }} </h2>
-        <h3 class="card-text">{{image.description}}</h3>
-        <h3 class="card-text">{{image.image_category}}</h3>
-        <h3 class="card-text">Taken at {{image.image_location}}</h3>
-      </div>
-  
-    <!--Display images  -->
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%">
+  <!-- Looping through images   -->
+  {% for image in images %}
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{image.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="{{image.pic_image.url}} " class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}"
+            style="width: 100%;">
+          <p>{{image.description}}</p>
+          <p>Image category: {{image.image_category}}</p><label for="location">Image location: {{image.location}}</label>
+        </div>
+        <div class="modal-footer">
+          <input class="form-control" type="text" value="http://127.0.0.1.8000{{image.pic_image.url}}" id="thislinkhere-{{image.id}}">
+          <a onclick="({image,id})"><button type="button" class="btn btn-info my-2 my-sm-0 link-btn">Copy image link</button></a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
       </div>
     </div>
-  
-    {% empty %}
-    <div class="row">
-      <h2 class="text-center">There No image</h2>
-    </div>
-    {% endfor %}
-  
   </div>
+  {% endfor %}
+  {% for image in images %}
+  <div class="row">
+    <!-- displaying Images -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <h2 class="card-title"> {{ image.name }} </h2>
+      <h3 class="card-text">{{image.description}}</h3>
+      <h3 class="card-text">{{image.image_category}}</h3>
+      <h3 class="card-text">Taken at {{image.location}}</h3>
+    </div>
+
+    <!--Display images  -->
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%" data-toggle="modal" data-target="#exampleModal">
+    </div>
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Launch demo modal
+    </button> -->
+  </div>
+  {% endfor %}
+
+</div>
 
 {%endblock%}

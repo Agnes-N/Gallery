@@ -8,7 +8,7 @@ class Image(models.Model):
     description = models.TextField()
     pic_image = models.ImageField(upload_to = 'images/', null=True)
     image_category = models.ForeignKey('Category', null=True)
-    image_location = models.ForeignKey('Location', null=True)
+    location = models.ForeignKey('Location', null=True)
 
     @classmethod
     def get_all_images(cls):
@@ -37,15 +37,15 @@ class Image(models.Model):
 
     @classmethod
     def filter_by_location(cls,id):
-        images = cls.objects.filter(image_location__location = id)
+        images = cls.objects.filter(location__id = id)
         return images
 
     def __str__(self):
         return self.name
 
 class Category(models.Model):
-    categories = (("dogs","dogs"),("cats","cats"),("people","people"),("flowers","flowers")) 
-    category = models.CharField(max_length = 255, choices = categories)
+    # categories = (("dogs","dogs"),("cats","cats"),("people","people"),("flowers","flowers")) 
+    category = models.CharField(max_length = 255)
 
     class Meta: 
         verbose_name_plural = 'Category'
@@ -63,11 +63,19 @@ class Category(models.Model):
         cls.objects.filter(id = id).update(category = new_category)
 
 class Location(models.Model):
-    locations = (("Kicukiro","Kicukiro"),("Gasabo","Gasabo"),("Park","Park"),("USA","USA")) 
-    location = models.CharField(max_length = 255, choices = locations)
+    # locations = (("Kicukiro","Kicukiro"),("Gasabo","Gasabo"),("Park","Park"),("USA","USA")) 
+    location = models.CharField(max_length = 255)
 
     class Meta: 
         verbose_name_plural = 'Location'
+    
+    def save_location(self):
+        self.save()
+
+    @classmethod
+    def get_location_id(cls,id):
+        locate = cls.objects.get(id = id)
+        return locate
 
     def __str__(self):
         return f"{self.location}"
