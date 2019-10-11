@@ -30,8 +30,8 @@ class Image(models.Model):
         return image
 
     @classmethod
-    def get_image_by_category(cls,category):
-        images = cls.objects.filter(pic_image = category)
+    def search_by_category(cls,category):
+        images = cls.objects.filter(pic_image__icontains = category)
         return images
 
     # @classmethod

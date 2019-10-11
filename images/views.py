@@ -22,11 +22,11 @@ def search_image(request):
         return render(request, 'search.html', {"message": message})
 def category(request):
     categories = Image.get_all_images()
-    return render(request,'category.html', {"categories":categories})
+    return render(request,'welcome.html', {"categories":categories})
 
 def single_image(request,image_id):
     try:
         image = Image.objects.get(id = image_id)
     except DoesNotExist:
             raise Http404()
-    return render(request, 'image.html', {"image":image})
+    return render(request, 'welcome.html', {"image":image})
