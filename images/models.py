@@ -8,6 +8,7 @@ class Image(models.Model):
     description = models.TextField()
     pic_image = models.ImageField(upload_to = 'images/', null=True)
     image_category = models.ForeignKey('Category', null=True)
+    image_location = models.ForeignKey('Location', null=True)
 
     @classmethod
     def get_all_images(cls):
@@ -31,19 +32,19 @@ class Image(models.Model):
 
     @classmethod
     def search_by_category(cls,category_item):
-        images = cls.objects.filter(image_category = category_item)
+        images = cls.objects.filter(image_category__category = category_item)
         return images
 
     @classmethod
     def get_image_by_location(cls,location):
-        images = cls.objects.filter(image_location = location)
+        images = cls.objects.filter(image_location__location = location)
         return images
 
     def __str__(self):
         return self.name
 
 class Category(models.Model):
-    categories = (("dogs","dogs"),("cats","cats")) 
+    categories = (("dogs","dogs"),("cats","cats"),("people","people"),("flowers","flowers")) 
     category = models.CharField(max_length = 255, choices = categories)
 
     class Meta: 
@@ -60,3 +61,13 @@ class Category(models.Model):
     @classmethod
     def update_category(cls,id,new_category):
         cls.objects.filter(id = id).update(category = new_category)
+
+class Location(models.Model):
+    locations = (("Kicukiro","Kicukiro"),("Gasabo","Gasabo"),("Park","Park"),("USA","USA")) 
+    location = models.CharField(max_length = 255, choices = locations)
+
+    class Meta: 
+        verbose_name_plural = 'Location'
+
+    def __str__(self):
+        return f"{self.location}"

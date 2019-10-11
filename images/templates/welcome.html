@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <!-- Looping through news   -->
+    <!-- Looping through images   -->
     {% for image in images %}
   
     <div class="row">
@@ -16,7 +16,7 @@
         <h3 class="card-text">{{image.image_category}}</h3>
       </div>
   
-    <!--Display news images  -->
+    <!--Display images  -->
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%">
       </div>
