@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http  import HttpResponse,Http404
-from .models import Image,Category
+from .models import Image,Category,Location
 
 # Create your views here.
 
@@ -19,6 +19,7 @@ def search_image(request):
 
                 return render(request, 'search.html', {"images":searched_image,"message":message, "categories":categories})
 
+
         else:
                 message = "You have'nt search for any term"
         return render(request, 'search.html', {"message": message})
@@ -27,9 +28,9 @@ def category(request):
         categories = Image.get_all_images()
         return render(request,'category.html', {"categories":categories})
 
-def image_location(request):
-        locations = Location.get_image_by_location()
-        return render(request,'location.html', {"locations":locations})
+def image_location(request,location_id):
+        location_of_image = Image.filter_by_location(location_id)
+        return render(request,'location.html', {"location_of_image":location_of_image})
 
 def single_image(request,image_id):
         try:
