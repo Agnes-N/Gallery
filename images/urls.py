@@ -4,8 +4,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
-    url('^$',views.welcome,name = 'welcome'),
+    url('^$',views.welcome, name = 'welcome'),
     url(r'^search/', views.search_image, name='search_image'),
+    url(r'^image/(\d+)', views.single_image, name='image'),
 ]
 
 if settings.DEBUG:
