@@ -37,7 +37,7 @@
           <p>Image category: {{image.image_category}}</p><label for="location">Image location: {{image.location}}</label>
         </div>
         <div class="modal-footer">
-          <!-- <input class="form-control" type="text" value="http://127.0.0.1.8000{{image.pic_image.url}}" id="thislinkhere-{{image.id}}"> -->
+          <input class="form-control" type="text" value="http://127.0.0.1.8000{{image.pic_image.url}}" id="thislinkhere-{{image.id}}">
           <a onclick="copyLink({image,id})"><button type="button" class="btn btn-info my-2 my-sm-0 link-btn">Copy image link</button></a>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
