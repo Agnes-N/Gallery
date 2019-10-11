@@ -6,7 +6,7 @@
         {% for image in location_of_image %}
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -17,8 +17,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <img src="{{image.pic_image.url}} " class="img-fluid" data-toggle="modal" data-target="#exampleModal{{image.id}}"
-                  style="width: 100%;">
+                <img src="{{image.pic_image.url}} " class="img-fluid" style="width: 100%;" data-toggle="modal" data-target="#{{image.id}}">
                 <p>{{image.description}}</p>
                 <p>Image category: {{image.image_category}}</p><label for="location">Image location: {{image.location}}</label>
               </div>
@@ -38,7 +37,7 @@
 
         <!--Display images  -->
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%">
+            <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%" data-toggle="modal" data-target="#{{image.id}}">
         </div>
     </div>
     {% endfor %}
