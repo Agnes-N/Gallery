@@ -14,7 +14,7 @@ Agnes Nyiramisigaro, 13 Oct 2019
 4. Copy a link to the photo to share with my friends.
 5. View photos based on the location they were taken.
 
-##Dependencies
+## Dependencies
 
 * beautifulsoup4==4.8.1
 * Django==1.11
