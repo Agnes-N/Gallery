@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="container">
-
+        <div class="row" style="margin-top: 3%; margin-left: 3%">
         {% for image in location_of_image %}
-
+       
         <!-- Modal -->
         <div class="modal fade" id="{{image.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
           aria-hidden="true">
@@ -29,16 +29,20 @@
             </div>
           </div>
         </div>
+    
         {% endfor %}
 
     {% for image in location_of_image %}
 
-    <div class="row" style="margin-top:5%">
 
-        <!--Display images  -->
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-bottom:2%" data-toggle="modal" data-target="#{{image.id}}">
+<div class="row" style="margin-top: 3%; margin-left: 3%">
+        <!-- displaying Images -->
+        <div class="col-md-4">
+            <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%" data-toggle="modal" data-target="#{{image.id}}" id="mylink">
         </div>
-    </div>
+</div>
+
     {% endfor %}
+</div>
+</div>
     {%endblock%}

@@ -1,9 +1,22 @@
 {% extends "base.html"%}
 {% block content %}
 {{block.super}}
+
+<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard -->
+
+<script>
+    function myFunction() {
+      var copyText = document.getElementById("mylink");
+      copyText.select();
+      copyText.setSelectionRange(0, 99999)
+      document.execCommand("copy");
+      alert("Copied the text: " + copyText.value);
+    }
+    </script>
+
 <h1 class='text-center' style="margin-bottom:5%;margin-top:3%;"> Welcome to my Gallery</h1>
 <div class="container">
-
+<div class="row" style="margin-top: 3%; margin-left: 3%">
   <!-- Looping through images   -->
   {% for image in images %}
 
@@ -19,14 +32,14 @@
           </button>
         </div>
         <div class="modal-body">
-          <img src="{{image.pic_image.url}} " class="img-fluid" data-toggle="modal" data-target="#{{image.id}}"
-            style="width: 100%;">
+          <img src="{{image.pic_image.url}} " class="img-fluid"
+            style="width: 100%;margin-left: 3%">
           <p>{{image.description}}</p>
           <p>Image category: {{image.image_category}}</p><label for="location">Image location: {{image.location}}</label>
         </div>
         <div class="modal-footer">
-          <!-- <input class="form-control" type="text" value="http://127.0.0.1.8000{{image.pic_image.url}}" id="thislinkhere-{{image.id}}"> -->
-          <a onclick="copyLink({image,id})"><button type="button" class="btn btn-info my-2 my-sm-0 link-btn">Copy image link</button></a>
+          <input class="form-control" type="text" value="127.0.0.1.8000{{image.pic_image.url}}" id="mylink" data-target="#{{image.id}}">
+         <button onclick="myFunction(mylink)" type="button" class="btn btn-info my-2 my-sm-0 link-btn">Copy image link</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -34,22 +47,15 @@
   </div>
   {% endfor %}
   {% for image in images %}
-  <div class="row">
+  <div class="row" style="margin-top: 3%; margin-left: 3%">
     <!-- displaying Images -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <h2 class="card-title"> {{ image.name }} </h2>
-      <h3 class="card-text">{{image.description}}</h3>
-      <h3 class="card-text">{{image.image_category}}</h3>
-      <h3 class="card-text">Taken at {{image.location}}</h3>
+    <div class="col-md-4">
+      <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%" data-toggle="modal" data-target="#{{image.id}}" id="mylink">
     </div>
 
-    <!--Display images  -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%" data-toggle="modal" data-target="#{{image.id}}">
-    </div>
   </div>
   {% endfor %}
 
 </div>
-
+</div>
 {%endblock%}
