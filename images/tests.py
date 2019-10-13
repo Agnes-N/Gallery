@@ -38,5 +38,17 @@ class ImageTestClass(TestCase):
         deleted = Image.objects.all()
         self.assertTrue(len(deleted) <= 0)
         
+class LocationTestClass(TestCase):
+    # SetUp Class
+    def setUp(self):
+        self.location = Location(location="UK")
+        
+    def tearDown(self):
+        Location.objects.all().delete()
+        
+    def test_save_location(self):
+        self.location.save_location()
+        location = Location.objects.all()
+        self.assertTrue(len(location)>= 1)
         
         
