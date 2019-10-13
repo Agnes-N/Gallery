@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light beige" style="background-color:beige">
+  <nav class="navbar navbar-expand-lg navbar-light pink" style="background-color:pink; box-shadow: 10px 10px 8px 10px #f8eded; padding: 20px">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="{% url 'welcome' %}">Photo Gallery</a>
-        <a href="/location/1" style="color:black">Gasabo</a>
-        <a href="/location/2" style="color:black">Kicukiro</a>
-        <a href="/location/3" style="color:black">USA</a>
+        <a class="navbar-brand" href="{% url 'welcome' %}" style="color:white">GALLERY</a>
+        <a class="navbar-brand" href="{% url 'location' 5%}" style="color:white">RWANDA</a>
+        <a class="navbar-brand" href="{% url 'location' 6%}" style="color:white">UK</a>
+        <a class="navbar-brand" href="{% url 'location' 3%}" style="color:white">USA</a>
+        <a class="navbar-brand" href="{% url 'location' 7%}" style="color:white">CANADA</a>
       </div>
 
       <!-- Adding a search form  -->
@@ -23,7 +24,7 @@
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Search Image" name="image">
             <div class="input-group-btn">
-              <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i>Search</button>
+              <button class="btn btn-success" type="submit" style="color:white"><i class="glyphicon glyphicon-search"></i>Search</button>
             </div>
           </div>
 

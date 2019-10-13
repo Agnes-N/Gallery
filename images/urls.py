@@ -8,6 +8,7 @@ urlpatterns=[
     url(r'^search/', views.search_image, name='search_image'),
     url(r'^image/(\d+)', views.image, name='image'),
     url(r'^location/(\d+)', views.image_location, name = 'location'),
+    url(r'^copy/(\d+)', views.copy_image_url, name = 'copy'),
 ] 
 
 if settings.DEBUG:

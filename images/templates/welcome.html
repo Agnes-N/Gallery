@@ -5,16 +5,10 @@
 <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard -->
 
 <script>
-    function myFunction() {
-      var copyText = document.getElementById("mylink");
-      copyText.select();
-      copyText.setSelectionRange(0, 99999)
-      document.execCommand("copy");
-      alert("Copied the text: " + copyText.value);
-    }
+    var expand = document.querySelectorAll('[data-expand]');
     </script>
 
-<h1 class='text-center' style="margin-bottom:5%;margin-top:3%;"> Welcome to my Gallery</h1>
+<h1 class='text-center' style="margin-bottom:5%;margin-top:3%; color: salmon"> Welcome to my Gallery</h1>
 <div class="container">
 <div class="row" style="margin-top: 3%; margin-left: 3%">
   <!-- Looping through images   -->
@@ -31,16 +25,16 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="font-family: 'Lobster', cursive;">
           <img src="{{image.pic_image.url}} " class="img-fluid" style="width: 100%;margin-left: 3%">
           <p>{{image.description}}</p>
           <p>Image category: {{image.image_category}}</p><label for="location">Image location: {{image.location}}</label>
         </div>
         <div class="modal-footer">
-         <input class="form-control" type="text" value="127.0.0.1.8000{{image.pic_image.url}}" id="mylink">
-         <button onclick="myFunction(mylink)" type="button" class="btn btn-info my-2 my-sm-0 link-btn" data-target="#{{image.id}}">Copy image link</button>
-         <a href="{{image.pic_image.url}}" target="_blank" class="btn btn-success">View Image</a>
-         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <input class="form-control" type="text" value="127.0.0.1.8000{{image.pic_image.url}}" id="{{image.id}}" >
+         <a class="btn btn-info" href="{% url 'copy' image.id %}" style="color:white">Copy Image link</a>
+         <a href="{{image.pic_image.url}}" target="_blank" class="btn btn-success expand"  data-expand>View Image</a>
+         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -50,13 +44,12 @@
   <div class="row" style="margin-top: 3%; margin-left: 3%">
     <!-- displaying Images -->
     <div class="col-md-4">
-      <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%" data-toggle="modal" data-target="#{{image.id}}" id="mylink">
-      <a href="{{image.pic_image.url}}" target="_blank" class="btn btn-success">View Image</a>
+        
+      <img src="{{image.pic_image.url}} " width="300" height="200" class="thumbnail img-responsive" alt="Image" style="margin-top:5%" data-toggle="modal" data-target="#{{image.id}}" id="mylink">
     </div>
 
   </div>
   {% endfor %}
-
 </div>
 </div>
 {%endblock%}
