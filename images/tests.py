@@ -1,3 +1,21 @@
 from django.test import TestCase
+from .models import Image,Location,Category
 
 # Create your tests here.
+class ImageTestClass(TestCase):
+    
+    # Setup method
+    def setUp(self):
+        self.location = Location(location='Africa')
+        self.location.save()
+        
+        self.category = Category(category = 'fun')
+        self.category.save()
+        
+        self.image = Image(pic_image = 'dog2.jpg', name='test',description='This is a test image',location = self.location, image_category = self.category)
+        
+        
+    def tearDown(self):
+        Image.objects.all().delete()
+        Location.objects.all().delete()
+        Category.objects.all().delete()

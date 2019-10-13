@@ -2,13 +2,10 @@
 {% block content %}
 {{block.super}}
 
-<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_copy_clipboard -->
+<style>
+</style>
 
-<script>
-    var expand = document.querySelectorAll('[data-expand]');
-    </script>
-
-<h1 class='text-center' style="margin-bottom:5%;margin-top:3%; color: salmon"> Welcome to my Gallery</h1>
+<h1 class='text-center' style="margin-bottom:5%;margin-top:3%; color: salmon;" id="text"> Welcome to my Gallery</h1>
 <div class="container">
 <div class="row" style="margin-top: 3%; margin-left: 3%">
   <!-- Looping through images   -->
@@ -25,7 +22,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" style="font-family: 'Lobster', cursive;">
+        <div class="modal-body" style="font-family: 'Francois One', sans-serif;">
           <img src="{{image.pic_image.url}} " class="img-fluid" style="width: 100%;margin-left: 3%">
           <p>{{image.description}}</p>
           <p>Image category: {{image.image_category}}</p><label for="location">Image location: {{image.location}}</label>
