@@ -51,4 +51,24 @@ class LocationTestClass(TestCase):
         location = Location.objects.all()
         self.assertTrue(len(location)>= 1)
         
+class CategoryTestClass(TestCase):
+     # SetUp Class
+    def setUp(self):
+        self.category = Category(category="cats")
+        
+    def tearDown(self):
+        Category.objects.all().delete()
+        
+    def test_save_category(self):
+        self.category.save_category()
+        category = Category.objects.all()
+        self.assertTrue(len(category)>= 1)
+        
+    def test_delete_category(self):
+        self.category.save_category()
+        categories = self.category.delete_category()
+        category = Category.objects.all()
+        self.assertTrue(len(category) <= 0)
+# Create your tests here.
+        
         
