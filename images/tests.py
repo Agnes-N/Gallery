@@ -19,3 +19,8 @@ class ImageTestClass(TestCase):
         Image.objects.all().delete()
         Location.objects.all().delete()
         Category.objects.all().delete()
+
+    # Testing Instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.image,Image))
+        
