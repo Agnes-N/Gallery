@@ -38,7 +38,8 @@
         </div>
         <div class="modal-footer">
          <input class="form-control" type="text" value="127.0.0.1.8000{{image.pic_image.url}}" id="mylink">
-         <button onclick="myFunction(mylink)" type="button" class="btn btn-info my-2 my-sm-0 link-btn">Copy image link</button>
+         <button onclick="myFunction(mylink)" type="button" class="btn btn-info my-2 my-sm-0 link-btn" data-target="#{{image.id}}">Copy image link</button>
+         <a href="{{image.pic_image.url}}" target="_blank" class="btn btn-success">View Image</a>
          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -50,6 +51,7 @@
     <!-- displaying Images -->
     <div class="col-md-4">
       <img src="{{image.pic_image.url}} " width="300" height="200" class="img-responsive" alt="Image" style="margin-top:5%" data-toggle="modal" data-target="#{{image.id}}" id="mylink">
+      <a href="{{image.pic_image.url}}" target="_blank" class="btn btn-success">View Image</a>
     </div>
 
   </div>
