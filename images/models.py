@@ -37,15 +37,15 @@ class Image(models.Model):
 
     @classmethod
     def filter_by_location(cls,id):
-        images = cls.objects.filter(location__id = id)
+        images = cls.objects.filter(location__location = id)
         return images
 
     def __str__(self):
         return self.name
 
 class Category(models.Model):
-    # categories = (("dogs","dogs"),("cats","cats"),("people","people"),("flowers","flowers")) 
-    category = models.CharField(max_length = 255)
+    categories = (("dogs","dogs"),("cats","cats"),("people","people"),("flowers","flowers")) 
+    category = models.CharField(max_length = 255, choices = categories)
 
     class Meta: 
         verbose_name_plural = 'Category'
@@ -63,8 +63,8 @@ class Category(models.Model):
         cls.objects.filter(id = id).update(category = new_category)
 
 class Location(models.Model):
-    # locations = (("Kicukiro","Kicukiro"),("Gasabo","Gasabo"),("Park","Park"),("USA","USA")) 
-    location = models.CharField(max_length = 255)
+    locations = (("UK","UK"),("RWANDA","RWANDA"),("CANADA","CANADA"),("USA","USA")) 
+    location = models.CharField(max_length = 255, choices = locations)
 
     class Meta: 
         verbose_name_plural = 'Location'
