@@ -24,3 +24,19 @@ class ImageTestClass(TestCase):
     def test_instance(self):
         self.assertTrue(isinstance(self.image,Image))
         
+    # testing the save method
+    def test_save_method(self):
+        self.image = Image(pic_image = 'dog2.jpg', name='test',description='This is a test image',location = self.location, image_category = self.category)
+        self.image.save_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) >= 1)
+        
+    def test_delete_method(self):
+        self.image = Image(pic_image = 'dog2.jpg', name='test',description='This is a test image',location = self.location, image_category = self.category)
+        self.image.save_image()
+        images = self.image.delete_image()
+        deleted = Image.objects.all()
+        self.assertTrue(len(deleted) <= 0)
+        
+        
+        
