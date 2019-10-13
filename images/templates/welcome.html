@@ -28,7 +28,6 @@
           <p>Image category: {{image.image_category}}</p><label for="location">Image location: {{image.location}}</label>
         </div>
         <div class="modal-footer">
-         <input class="form-control" type="text" value="127.0.0.1.8000{{image.pic_image.url}}" id="{{image.id}}" >
          <a class="btn btn-info" href="{% url 'copy' image.id %}" style="color:white">Copy Image link</a>
          <a href="{{image.pic_image.url}}" target="_blank" class="btn btn-success expand"  data-expand>View Image</a>
          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
