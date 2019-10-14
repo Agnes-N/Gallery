@@ -6,10 +6,10 @@ class ImageTestClass(TestCase):
     
     # Setup method
     def setUp(self):
-        self.location = Location(location='Africa')
+        self.location = Location(location='RWANDA')
         self.location.save()
         
-        self.category = Category(category = 'fun')
+        self.category = Category(category = 'cats')
         self.category.save()
         
         self.image = Image(pic_image = 'dog2.jpg', name='test',description='This is a test image',location = self.location, image_category = self.category)
