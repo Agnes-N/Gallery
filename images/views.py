@@ -36,6 +36,6 @@ def image(request,image_id):
 def copy_image_url(request, image_id):
         images = Image.get_all_images()
         loc = Image.objects.get( id = image_id)
-        pyperclip.copy('http://127.0.0.1:8000' + loc.pic_image.url)
+        pyperclip.copy('https://reinagallery1.herokuapp.com' + loc.pic_image.url)
         pyperclip.paste()
         return render(request, 'welcome.html', {"images":images})
