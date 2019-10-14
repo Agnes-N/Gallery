@@ -4,6 +4,9 @@ import datetime as dt
 # Create your models here.
 
 class Image(models.Model):
+    '''
+    a class for Image model
+    '''
     name = models.CharField(max_length =30)
     description = models.TextField()
     pic_image = models.ImageField(upload_to = 'images/', null=True)
@@ -44,6 +47,9 @@ class Image(models.Model):
         return self.name
 
 class Category(models.Model):
+    '''
+    a class for Category model
+    '''
     categories = (("dogs","dogs"),("cats","cats"),("people","people"),("flowers","flowers")) 
     category = models.CharField(max_length = 255, choices = categories)
 
@@ -63,6 +69,9 @@ class Category(models.Model):
         cls.objects.filter(id = id).update(category = new_category)
 
 class Location(models.Model):
+    '''
+    a class for Location model
+    '''
     locations = (("UK","UK"),("RWANDA","RWANDA"),("CANADA","CANADA"),("USA","USA")) 
     location = models.CharField(max_length = 255, choices = locations)
 
